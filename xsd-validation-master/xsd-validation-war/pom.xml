@@ -1,0 +1,125 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>be.alphacredit.tests</groupId>
+    <artifactId>xsd-validation-master</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>xsd-validation-war</artifactId>
+  <packaging>war</packaging>
+  <name>xsd-validation :: WAR</name>
+  <build>
+    <finalName>xsd-validation-war</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/src/main/webapp/WEB-INF/wsdl</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/../xsd-validation-ws/src/main/resources</directory>
+                  <includes>
+                    <include>test.wsdl</include>
+                  </includes>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+     </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>Deploy the WAR</id>
+            <phase>install</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>C:/Program Files (x86)/IBM/WebSphere/AppServer/bin/ws_ant.bat</executable>
+              <arguments>
+                <argument>-buildfile</argument>
+                <argument>ws_ant.xml</argument>
+                <argument>deploy</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>Start the WAR</id>
+            <phase>install</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>C:/Program Files (x86)/IBM/WebSphere/AppServer/bin/ws_ant.bat</executable>
+              <arguments>
+                <argument>-buildfile</argument>
+                <argument>ws_ant.xml</argument>
+                <argument>startApplication</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>Stop the WAR</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>C:/Program Files (x86)/IBM/WebSphere/AppServer/bin/ws_ant.bat</executable>
+              <arguments>
+                <argument>-buildfile</argument>
+                <argument>ws_ant.xml</argument>
+                <argument>stopApplication</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>Undeploy the WAR</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>C:/Program Files (x86)/IBM/WebSphere/AppServer/bin/ws_ant.bat</executable>
+              <arguments>
+                <argument>-buildfile</argument>
+                <argument>ws_ant.xml</argument>
+                <argument>undeploy</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>be.alphacredit.tests</groupId>
+      <artifactId>xsd-validation-ws</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-frontend-jaxws</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-transports-http</artifactId>
+    </dependency>
+  </dependencies>
+</project>
