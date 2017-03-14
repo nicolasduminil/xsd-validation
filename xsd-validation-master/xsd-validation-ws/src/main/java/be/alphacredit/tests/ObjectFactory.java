@@ -30,11 +30,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TestStringOutput }
+     * Create an instance of {@link TestStringInput }
      * 
      */
-    public TestStringOutput createTestStringOutput() {
-        return new TestStringOutput();
+    public TestStringInput createTestStringInput() {
+        return new TestStringInput();
     }
 
     /**
@@ -46,11 +46,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TestStringInput }
+     * Create an instance of {@link TestStringOutput }
      * 
      */
-    public TestStringInput createTestStringInput() {
-        return new TestStringInput();
+    public TestStringOutput createTestStringOutput() {
+        return new TestStringOutput();
     }
 
 }

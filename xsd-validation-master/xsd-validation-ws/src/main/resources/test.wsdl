@@ -62,7 +62,7 @@
     <wsdl:operation name="testOperation">
       <wsdl:input message="tns:testOperationRequest" name="testOperationInput" />
       <wsdl:output message="tns:testOperationResponse" name="testOperationOutput" />
-      <wsdl:fault name="testOperationFaultfault" message="tns:testOperationException"></wsdl:fault>
+      <wsdl:fault name="testOperationFaultfault" message="tns:testOperationException"/>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TestSOAP" type="tns:TestServicePortType">

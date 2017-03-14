@@ -7,12 +7,15 @@ import javax.wsdl.extensions.schema.Schema;
 import javax.wsdl.factory.*;
 import javax.wsdl.xml.*;
 import javax.xml.*;
+import javax.xml.namespace.*;
+import javax.xml.soap.*;
 import javax.xml.transform.dom.*;
 import javax.xml.validation.*;
-import javax.xml.ws.*;
 import javax.xml.ws.handler.*;
+import javax.xml.ws.soap.*;
 
 import org.w3c.dom.*;
+import org.xml.sax.*;
 
 public class ValidationLogicalHandler implements LogicalHandler<LogicalMessageContext>
 {
@@ -37,11 +40,25 @@ public class ValidationLogicalHandler implements LogicalHandler<LogicalMessageCo
   {
     try
     {
-    getValidator().validate(ctx.getMessage().getPayload());
+      getValidator().validate(ctx.getMessage().getPayload());
+    }
+    catch (SAXParseException ex)
+    {
+      try
+      {
+        SOAPFactory soapFactory = SOAPFactory.newInstance();
+        SOAPFault soapFault = soapFactory.createFault("SOAP validation failure", new QName("http://schemas.xmlsoap.org/soap/envelope/", "Server"));
+        soapFault.setFaultString(ex.getMessage());
+        System.out.println ("*** Throwing SOAPFaultException");
+        throw new SOAPFaultException(soapFault);
+      }
+      catch (SOAPException ex1)
+      {
+      }
     }
     catch (Exception ex)
     {
-      throw new WebServiceException(ex.getMessage());
+      ex.printStackTrace();
     }
     return true;
   }
