@@ -49,7 +49,6 @@ public class ValidationLogicalHandler implements LogicalHandler<LogicalMessageCo
         SOAPFactory soapFactory = SOAPFactory.newInstance();
         SOAPFault soapFault = soapFactory.createFault("SOAP validation failure", new QName("http://schemas.xmlsoap.org/soap/envelope/", "Server"));
         soapFault.setFaultString(ex.getMessage());
-        System.out.println ("*** Throwing SOAPFaultException");
         throw new SOAPFaultException(soapFault);
       }
       catch (SOAPException ex1)
