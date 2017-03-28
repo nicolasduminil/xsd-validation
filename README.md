@@ -1,5 +1,5 @@
 # xsd-validation
-Demonstrate using XSD validation rules in JAX-WS services
+Demonstrates using XSD validation rules in JAX-WS services
 
 A WSDL file contains references to XSD grammars, either in-line or included as separated files. These XSD grammars define the data structures which can be sent to the service over SOAP. In an XSD, one may define validation rules, for example numeric or alphabetic fields, email addresses type, phone numbers types, etc.
 
@@ -18,3 +18,5 @@ In order to run the project:
   - ammend the file ${PROJECT_ROOT}/xsd-validation-master/xsd-validation-war/ws-ant.xml such that to reflect your environment. Make sure that the properties hostName, connType, connPort, userId, password, wasHome, node and server are correctly defined.
   - in the directory ${PROJECT_ROOT}/xsd-validation-master, run mvn clean install
   - test the deployed service using a SoapUI project on http://[server]:[port]/xsd-validation-war/TestService
+  
+N.B. WebSphere 8.x has a new feature consisting in returnin the message "Internal Error" whatever the fault exception message is set. This is for security reasons, such that to not give to a possible attacker the opportunity to get information about the service. In order to customize the SOAPFault messages one needs to disable this feature. This may be done by defining the property webservices.unify.faults=false as described here (http://stackoverflow.com/questions/12805119/jax-ws-server-side-soaphandler-that-returns-fault-gets-internal-error-on-websp). It is essential that the WebSphere test server be configured this way in order for the SOAPFaults messages customisation to be effective.  
