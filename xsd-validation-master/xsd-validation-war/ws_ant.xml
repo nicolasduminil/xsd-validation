@@ -10,10 +10,10 @@
   <property name="hostName" value="localhost" />
   <property name="connType" value="SOAP" />
   <property name="connPort" value="8880" />
-  <property name="userId" value="nicolas" />
+  <property name="userId" value="duminiln" />
   <property name="password" value="California1" />
-  <property name="wasHome.dir" value="C:/Program Files (x86)/IBM/WebSphere/AppServer" />
-  <property name="node" value="cac40Node01" />
+  <property name="wasHome.dir" value="C:/ibm/WebSphere/AppServer/V8.5.5.2/" />
+  <property name="node" value="obxNode01" />
   <property name="server" value="server1" />
 
   <!-- Was Ant task definitions -->
@@ -30,8 +30,7 @@
   </target>
 
   <target name="deploy" description="Deploy the war">
-  	<echo message="*********** ${build.dir}/${name}.war"/>
-    <wsInstallApp ear="${build.dir}/${name}.war" options="-appname ${name}" failonerror="true" wasHome="${wasHome.dir}" user="${userId}" password="${password}" profileName="AppSrv01" />
+    <wsInstallApp ear="${build.dir}/${name}.war" options="-appname ${name}" failonerror="true" wasHome="${wasHome.dir}" user="${userId}" password="${password}" profileName="cw_profile" />
   </target>
 
   <target name="undeploy">

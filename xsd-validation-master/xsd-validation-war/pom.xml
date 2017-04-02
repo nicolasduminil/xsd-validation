@@ -8,6 +8,51 @@
   <artifactId>xsd-validation-war</artifactId>
   <packaging>war</packaging>
   <name>xsd-validation :: WAR</name>
+  <dependencies>
+    <dependency>
+      <groupId>com.ibm.websphere.j2ee</groupId>
+      <artifactId>j2ee</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>wsdl4j</groupId>
+      <artifactId>wsdl4j</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>be.alphacredit.tests</groupId>
+      <artifactId>xsd-validation-ws</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.shrinkwrap.resolver</groupId>
+      <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.junit</groupId>
+      <artifactId>arquillian-junit-container</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.protocol</groupId>
+      <artifactId>arquillian-protocol-servlet</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.container</groupId>
+      <artifactId>arquillian-was-remote-8.5</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
   <build>
     <finalName>xsd-validation-war</finalName>
     <plugins>
@@ -39,7 +84,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-     </plugin>
+      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -51,7 +96,7 @@
               <goal>exec</goal>
             </goals>
             <configuration>
-              <executable>C:/Program Files (x86)/IBM/WebSphere/AppServer/bin/ws_ant.bat</executable>
+              <executable>C:/ibm/WebSphere/AppServer/V8.5.5.2/profiles/cw_profile/bin/ws_ant.bat</executable>
               <arguments>
                 <argument>-buildfile</argument>
                 <argument>ws_ant.xml</argument>
@@ -66,7 +111,7 @@
               <goal>exec</goal>
             </goals>
             <configuration>
-              <executable>C:/Program Files (x86)/IBM/WebSphere/AppServer/bin/ws_ant.bat</executable>
+              <executable>C:/ibm/WebSphere/AppServer/V8.5.5.2/profiles/cw_profile/bin/ws_ant.bat</executable>
               <arguments>
                 <argument>-buildfile</argument>
                 <argument>ws_ant.xml</argument>
@@ -81,7 +126,7 @@
               <goal>exec</goal>
             </goals>
             <configuration>
-              <executable>C:/Program Files (x86)/IBM/WebSphere/AppServer/bin/ws_ant.bat</executable>
+              <executable>C:/ibm/WebSphere/AppServer/V8.5.5.2/profiles/cw_profile/bin/ws_ant.bat</executable>
               <arguments>
                 <argument>-buildfile</argument>
                 <argument>ws_ant.xml</argument>
@@ -96,7 +141,7 @@
               <goal>exec</goal>
             </goals>
             <configuration>
-              <executable>C:/Program Files (x86)/IBM/WebSphere/AppServer/bin/ws_ant.bat</executable>
+              <executable>C:/ibm/WebSphere/AppServer/V8.5.5.2/profiles/cw_profile/bin/ws_ant.bat</executable>
               <arguments>
                 <argument>-buildfile</argument>
                 <argument>ws_ant.xml</argument>
@@ -108,18 +153,4 @@
       </plugin>
     </plugins>
   </build>
-  <dependencies>
-    <dependency>
-      <groupId>be.alphacredit.tests</groupId>
-      <artifactId>xsd-validation-ws</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-frontend-jaxws</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-transports-http</artifactId>
-    </dependency>
-  </dependencies>
 </project>

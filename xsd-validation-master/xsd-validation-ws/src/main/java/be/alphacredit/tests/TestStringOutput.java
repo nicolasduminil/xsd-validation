@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Classe Java pour anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType>
@@ -38,7 +38,7 @@ public class TestStringOutput {
     protected String testOutput;
 
     /**
-     * Gets the value of the testOutput property.
+     * Obtient la valeur de la propriété testOutput.
      * 
      * @return
      *     possible object is
@@ -50,7 +50,7 @@ public class TestStringOutput {
     }
 
     /**
-     * Sets the value of the testOutput property.
+     * Définit la valeur de la propriété testOutput.
      * 
      * @param value
      *     allowed object is
