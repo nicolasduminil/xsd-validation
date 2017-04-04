@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -67,7 +67,7 @@ public class TestStringInput {
     protected BigInteger fiveDigits;
 
     /**
-     * Obtient la valeur de la propriété range.
+     * Gets the value of the range property.
      * 
      */
     public int getRange() {
@@ -75,7 +75,7 @@ public class TestStringInput {
     }
 
     /**
-     * Définit la valeur de la propriété range.
+     * Sets the value of the range property.
      * 
      */
     public void setRange(int value) {
@@ -83,7 +83,7 @@ public class TestStringInput {
     }
 
     /**
-     * Obtient la valeur de la propriété enum.
+     * Gets the value of the enum property.
      * 
      * @return
      *     possible object is
@@ -95,7 +95,7 @@ public class TestStringInput {
     }
 
     /**
-     * Définit la valeur de la propriété enum.
+     * Sets the value of the enum property.
      * 
      * @param value
      *     allowed object is
@@ -107,7 +107,7 @@ public class TestStringInput {
     }
 
     /**
-     * Obtient la valeur de la propriété fiveDigits.
+     * Gets the value of the fiveDigits property.
      * 
      * @return
      *     possible object is
@@ -119,7 +119,7 @@ public class TestStringInput {
     }
 
     /**
-     * Définit la valeur de la propriété fiveDigits.
+     * Sets the value of the fiveDigits property.
      * 
      * @param value
      *     allowed object is

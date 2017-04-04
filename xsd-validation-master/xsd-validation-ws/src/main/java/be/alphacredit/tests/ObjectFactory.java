@@ -30,14 +30,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TestStringFault }
-     * 
-     */
-    public TestStringFault createTestStringFault() {
-        return new TestStringFault();
-    }
-
-    /**
      * Create an instance of {@link TestStringOutput }
      * 
      */
@@ -51,6 +43,14 @@ public class ObjectFactory {
      */
     public TestStringInput createTestStringInput() {
         return new TestStringInput();
+    }
+
+    /**
+     * Create an instance of {@link TestStringFault }
+     * 
+     */
+    public TestStringFault createTestStringFault() {
+        return new TestStringFault();
     }
 
 }
