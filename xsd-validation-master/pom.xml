@@ -5,22 +5,69 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>xsd-validation :: Master POM</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <was_home>C:/Program Files (x86)/IBM/WebSphere/AppServer</was_home>
+    <was_host>localhost</was_host>
+    <was_server>server1</was_server>
+    <was_node>cac40Node01</was_node>
+    <was_virtualHost>default_host</was_virtualHost>
+    <was_connType>SOAP</was_connType>
+    <was_connport>8880</was_connport>
+  </properties>
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>com.ibm.websphere.j2ee</groupId>
+        <artifactId>j2ee</artifactId>
+        <version>1.0.0</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>wsdl4j</groupId>
+        <artifactId>wsdl4j</artifactId>
+        <version>1.6.2</version>
+        <scope>provided</scope>
+      </dependency>
       <dependency>
         <groupId>be.alphacredit.tests</groupId>
         <artifactId>xsd-validation-ws</artifactId>
         <version>0.0.1-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-rt-frontend-jaxws</artifactId>
-        <version>2.7.14</version>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.7.25</version>
       </dependency>
       <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-rt-transports-http</artifactId>
-        <version>2.7.14</version>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.shrinkwrap.resolver</groupId>
+        <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+        <version>2.2.6</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.arquillian.junit</groupId>
+        <artifactId>arquillian-junit-container</artifactId>
+        <version>1.1.9.Final</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.arquillian.protocol</groupId>
+        <artifactId>arquillian-protocol-servlet</artifactId>
+        <scope>test</scope>
+        <version>1.1.9.Final</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.arquillian.container</groupId>
+        <artifactId>arquillian-was-remote-8.5</artifactId>
+        <version>1.0.0.Final-SNAPSHOT</version>
+        <scope>test</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -48,8 +95,8 @@
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
-          <artifactId>exec-maven-plugin</artifactId>
-          <version>1.5.0</version>
+          <artifactId>was6-maven-plugin</artifactId>
+          <version>1.2.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>

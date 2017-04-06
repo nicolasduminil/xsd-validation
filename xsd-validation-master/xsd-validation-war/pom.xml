@@ -39,87 +39,77 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-     </plugin>
+      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
+        <artifactId>was6-maven-plugin</artifactId>
         <executions>
           <execution>
-            <id>Deploy the WAR</id>
-            <phase>install</phase>
+            <id>integration-test</id>
+            <phase>integration-test</phase>
             <goals>
-              <goal>exec</goal>
+              <goal>installApp</goal>
             </goals>
-            <configuration>
-              <executable>C:/Program Files (x86)/IBM/WebSphere/AppServer/bin/ws_ant.bat</executable>
-              <arguments>
-                <argument>-buildfile</argument>
-                <argument>ws_ant.xml</argument>
-                <argument>deploy</argument>
-              </arguments>
-            </configuration>
-          </execution>
-          <execution>
-            <id>Start the WAR</id>
-            <phase>install</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <configuration>
-              <executable>C:/Program Files (x86)/IBM/WebSphere/AppServer/bin/ws_ant.bat</executable>
-              <arguments>
-                <argument>-buildfile</argument>
-                <argument>ws_ant.xml</argument>
-                <argument>startApplication</argument>
-              </arguments>
-            </configuration>
-          </execution>
-          <execution>
-            <id>Stop the WAR</id>
-            <phase>clean</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <configuration>
-              <executable>C:/Program Files (x86)/IBM/WebSphere/AppServer/bin/ws_ant.bat</executable>
-              <arguments>
-                <argument>-buildfile</argument>
-                <argument>ws_ant.xml</argument>
-                <argument>stopApplication</argument>
-              </arguments>
-            </configuration>
-          </execution>
-          <execution>
-            <id>Undeploy the WAR</id>
-            <phase>clean</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <configuration>
-              <executable>C:/Program Files (x86)/IBM/WebSphere/AppServer/bin/ws_ant.bat</executable>
-              <arguments>
-                <argument>-buildfile</argument>
-                <argument>ws_ant.xml</argument>
-                <argument>undeploy</argument>
-              </arguments>
-            </configuration>
           </execution>
         </executions>
+        <configuration>
+          <wasHome>${was_home}</wasHome>
+          <host>${was_host}</host>
+          <server>${was_server}</server>
+          <node>${was_node}</node>
+          <virtualHost>${was_virtualHost}</virtualHost>
+          <conntype>${was_connType}</conntype>
+          <port>${was_connPort}</port>
+          <earFile>target/${project.build.finalName}.war</earFile>
+          <updateExisting>true</updateExisting>
+          <applicationName>${project.build.finalName}</applicationName>
+        </configuration>
       </plugin>
     </plugins>
   </build>
   <dependencies>
     <dependency>
+      <groupId>com.ibm.websphere.j2ee</groupId>
+      <artifactId>j2ee</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>wsdl4j</groupId>
+      <artifactId>wsdl4j</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>be.alphacredit.tests</groupId>
       <artifactId>xsd-validation-ws</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-frontend-jaxws</artifactId>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-transports-http</artifactId>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.shrinkwrap.resolver</groupId>
+      <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.junit</groupId>
+      <artifactId>arquillian-junit-container</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.protocol</groupId>
+      <artifactId>arquillian-protocol-servlet</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.container</groupId>
+      <artifactId>arquillian-was-remote-8.5</artifactId>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 </project>
