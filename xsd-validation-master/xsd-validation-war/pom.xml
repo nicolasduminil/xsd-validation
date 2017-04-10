@@ -10,6 +10,14 @@
   <name>xsd-validation :: WAR</name>
   <build>
     <finalName>xsd-validation-war</finalName>
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+      </testResource>
+      <testResource>
+        <directory>src/main/webapp</directory>
+      </testResource>
+    </testResources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -61,7 +69,7 @@
           <conntype>${was_connType}</conntype>
           <port>${was_connPort}</port>
           <earFile>target/${project.build.finalName}.war</earFile>
-          <updateExisting>true</updateExisting>
+          <updateExisting>false</updateExisting>
           <applicationName>${project.build.finalName}</applicationName>
         </configuration>
       </plugin>
@@ -87,13 +95,38 @@
       <artifactId>slf4j-log4j12</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.apache.axis2</groupId>
+      <artifactId>axis2</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.ws.commons.axiom</groupId>
+      <artifactId>axiom-api</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.shrinkwrap.resolver</groupId>
+      <artifactId>shrinkwrap-resolver-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.shrinkwrap.resolver</groupId>
+      <artifactId>shrinkwrap-resolver-api-maven</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.shrinkwrap.resolver</groupId>
       <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.shrinkwrap.resolver</groupId>
+      <artifactId>shrinkwrap-resolver-impl-maven-archive</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>

@@ -2,6 +2,8 @@ package be.alphacredit.tests;
 import java.math.*;
 import java.net.*;
 
+import javax.xml.ws.*;
+
 public class TestXSDValidation
 {
   public static void main(String[] args) throws Exception
@@ -11,7 +13,14 @@ public class TestXSDValidation
     testStringInput.setEnum("Toto");
     testStringInput.setFiveDigits(BigInteger.valueOf(99999));
     testStringInput.setRange(100);
+    try
+    {
     TestStringOutput testStringOutput = testService.getTestServicePort().testOperation(testStringInput);
     System.out.println("*** " + testStringOutput.getTestOutput());
+    }
+    catch (TestOperationException ex)
+    {
+      System.out.println("### TestOperationException: " + ex.getMessage());
+    }
   }
 }
