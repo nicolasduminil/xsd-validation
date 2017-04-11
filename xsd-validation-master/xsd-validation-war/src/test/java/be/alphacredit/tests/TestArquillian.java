@@ -12,7 +12,6 @@ import org.jboss.arquillian.junit.*;
 import org.jboss.shrinkwrap.api.*;
 import org.jboss.shrinkwrap.api.asset.*;
 import org.jboss.shrinkwrap.api.spec.*;
-import org.jboss.shrinkwrap.resolver.api.maven.*;
 import org.junit.*;
 import org.junit.runner.*;
 import org.slf4j.*;
