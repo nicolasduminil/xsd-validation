@@ -2,8 +2,6 @@ package be.alphacredit.tests;
 import java.math.*;
 import java.net.*;
 
-import javax.xml.ws.*;
-
 public class TestXSDValidation
 {
   public static void main(String[] args) throws Exception

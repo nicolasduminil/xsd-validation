@@ -4,34 +4,32 @@ import static org.junit.Assert.*;
 
 import java.io.*;
 import java.math.*;
+import java.net.*;
 
 import javax.xml.ws.*;
 
 import org.jboss.arquillian.container.test.api.*;
 import org.jboss.arquillian.junit.*;
 import org.jboss.shrinkwrap.api.*;
-import org.jboss.shrinkwrap.api.asset.*;
 import org.jboss.shrinkwrap.api.spec.*;
 import org.junit.*;
 import org.junit.runner.*;
-import org.slf4j.*;
 
 @RunWith(Arquillian.class)
 public class TestArquillian
 {
-  private static final Logger slf4jLogger = LoggerFactory.getLogger(TestArquillian.class);
-  private TestService testService = new TestService();
+  private static TestService testService; 
 
   @Deployment
   public static Archive<?> createTestArchive()
   {
     return ShrinkWrap.createFromZipFile(WebArchive.class, new File("target/xsd-validation-war.war"));
-    /*return (WebArchive) ShrinkWrap.create(WebArchive.class, "arquillian-test.war").setWebXML("WEB-INF/web.xml")
-        .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")       
-        .addAsWebInfResource("WEB-INF/wsdl/test.wsdl", "wsdl/test.wsdl").addPackage("be.alphacredit.tests")
-        .addAsManifestResource(new File ("src/main/webapp/META-INF/handler.xml"))
-        .addAsLibraries(Maven.resolver().loadPomFromFile("pom.xml").importRuntimeDependencies().resolve().withTransitivity().asFile());*/
-    //return ShrinkWrap.create(MavenImporter.class).loadPomFromFile("pom.xml").importBuildOutput(new AcceptScopesStrategy(ScopeType.TEST)).as(WebArchive.class);
+  }
+  
+  @Before
+  public void before() throws Exception
+  {
+    testService = new TestService(new URL("http://cac40:9080/xsd-validation-war/TestService?wsdl"));
   }
 
   @Test

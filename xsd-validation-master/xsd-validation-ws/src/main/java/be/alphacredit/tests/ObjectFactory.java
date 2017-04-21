@@ -38,19 +38,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TestStringFault }
-     * 
-     */
-    public TestStringFault createTestStringFault() {
-        return new TestStringFault();
-    }
-
-    /**
      * Create an instance of {@link TestStringOutput }
      * 
      */
     public TestStringOutput createTestStringOutput() {
         return new TestStringOutput();
+    }
+
+    /**
+     * Create an instance of {@link TestStringFault }
+     * 
+     */
+    public TestStringFault createTestStringFault() {
+        return new TestStringFault();
     }
 
 }
