@@ -37,7 +37,7 @@ public class ValidationLogicalHandler implements LogicalHandler<LogicalMessageCo
   {
     try
     {
-    getValidator().validate(ctx.getMessage().getPayload());
+      getValidator().validate(ctx.getMessage().getPayload());
     }
     catch (Exception ex)
     {

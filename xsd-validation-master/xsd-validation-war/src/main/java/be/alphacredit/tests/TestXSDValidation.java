@@ -11,7 +11,14 @@ public class TestXSDValidation
     testStringInput.setEnum("Toto");
     testStringInput.setFiveDigits(BigInteger.valueOf(99999));
     testStringInput.setRange(100);
+    try
+    {
     TestStringOutput testStringOutput = testService.getTestServicePort().testOperation(testStringInput);
     System.out.println("*** " + testStringOutput.getTestOutput());
+    }
+    catch (TestOperationException ex)
+    {
+      System.out.println("### TestOperationException: " + ex.getMessage());
+    }
   }
 }
